@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/wellness-record-app/static/css/main.22a8dc45.css",
+    "main.js": "/wellness-record-app/static/js/main.d8be7f88.js",
+    "static/js/213.f72ec0ed.chunk.js": "/wellness-record-app/static/js/213.f72ec0ed.chunk.js",
+    "static/js/455.ca62eea3.chunk.js": "/wellness-record-app/static/js/455.ca62eea3.chunk.js",
+    "index.html": "/wellness-record-app/index.html",
+    "main.22a8dc45.css.map": "/wellness-record-app/static/css/main.22a8dc45.css.map",
+    "main.d8be7f88.js.map": "/wellness-record-app/static/js/main.d8be7f88.js.map",
+    "213.f72ec0ed.chunk.js.map": "/wellness-record-app/static/js/213.f72ec0ed.chunk.js.map",
+    "455.ca62eea3.chunk.js.map": "/wellness-record-app/static/js/455.ca62eea3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.22a8dc45.css",
+    "static/js/main.d8be7f88.js"
+  ]
+}
