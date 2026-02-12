@@ -19,6 +19,17 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+#pdf-content {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #pdf-content {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
 @media print {
   .container {
     padding: 5px;
@@ -27,6 +38,11 @@ body {
   
   .button-group {
     display: none;
+  }
+  
+  #pdf-content {
+    width: 210mm;
+    margin: 0 auto;
   }
 }
 

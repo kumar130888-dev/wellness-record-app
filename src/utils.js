@@ -10,11 +10,22 @@ export const generatePDF = async (formData, photoDataUrl) => {
   }
 
   try {
+    // Save original styles
+    const originalWidth = element.style.width;
+    
+    // Set fixed width for A4 page (210mm = 793px at 96 DPI)
+    element.style.width = '793px';
+    
     const canvas = await html2canvas(element, { 
       scale: 2,
       useCORS: true,
-      logging: false
+      logging: false,
+      allowTaint: true
     });
+    
+    // Restore original width
+    element.style.width = originalWidth;
+    
     const imgData = canvas.toDataURL('image/png');
     
     const pdf = new jsPDF({
