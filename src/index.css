@@ -279,7 +279,6 @@ input[type="radio"] {
   grid-template-columns: 1fr;
   gap: 8px;
 }
-}
 
 .bmi-result {
   background-color: #e8f4f8;
