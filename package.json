@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Wellness Record Form with PDF Generation",
   "private": true,
-  "homepage": "https://kumar130888-dev.github.io/wellness-record-app",
   "dependencies": {
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
@@ -13,11 +12,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set CI=false && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
