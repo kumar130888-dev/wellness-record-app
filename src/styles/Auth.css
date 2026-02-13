@@ -1,0 +1,134 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.auth-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-box h1 {
+  color: #8b0000;
+  font-size: 28px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.auth-box h2 {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.auth-box .form-group {
+  margin-bottom: 18px;
+}
+
+.auth-box label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s;
+}
+
+.auth-box input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+.auth-box .btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: #8b0000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.auth-box .btn-primary:hover:not(:disabled) {
+  background-color: #a00000;
+}
+
+.auth-box .btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #c33;
+  font-size: 14px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 14px;
+}
+
+.link-btn:hover {
+  color: #764ba2;
+}
+
+.user-profile {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+}
+
+.user-profile p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.user-profile strong {
+  color: #333;
+}

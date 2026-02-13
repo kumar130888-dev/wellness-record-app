@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { recordService } from '../services/recordService';
 import { generatePDF, calculateBMI, calculateBodyFat, calculateBMR, getBodyFatStatus, getBMIStatus } from '../utils';
 import PersonalInfo from './sections/PersonalInfo';
 import EatingHabits from './sections/EatingHabits';
@@ -78,11 +80,13 @@ const initialFormState = {
   coachSign: '',
 };
 
-function WellnessForm() {
+function WellnessForm({ recordId, onBack }) {
+  const { user } = useAuth();
   const [formData, setFormData] = useState(initialFormState);
   const [photoDataUrl, setPhotoDataUrl] = useState(null);
   const [bmiData, setBmiData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const formRef = useRef(null);
 
   const handleInputChange = (e) => {
@@ -154,6 +158,28 @@ function WellnessForm() {
     }
   };
 
+  const handleSaveToDatabase = async () => {
+    if (!formData.name) {
+      alert('Please enter the patient name before saving.');
+      return;
+    }
+
+    setIsSaving(true);
+    try {
+      await recordService.addRecord(user.uid, formData, photoDataUrl);
+      alert('Record saved successfully!');
+      setFormData(initialFormState);
+      setPhotoDataUrl(null);
+      setBmiData(null);
+      onBack();
+    } catch (error) {
+      console.error('Error saving record:', error);
+      alert('Error saving record: ' + error.message);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   const handleGeneratePDF = async () => {
     if (!formData.name) {
       alert('Please enter the patient name before generating PDF.');
@@ -183,6 +209,19 @@ function WellnessForm() {
       <div className="button-group">
         <button 
           className="btn-primary" 
+          onClick={handleSaveToDatabase}
+          disabled={isSaving}
+        >
+          {isSaving ? (
+            <>
+              <span className="spinner"></span> Saving...
+            </>
+          ) : (
+            <>💾 Save to Database</>
+          )}
+        </button>
+        <button 
+          className="btn-primary" 
           onClick={handleGeneratePDF}
           disabled={isLoading}
         >
@@ -194,12 +233,17 @@ function WellnessForm() {
             <>📄 Generate PDF</>
           )}
         </button>
-        <button className="btn-secondary" onClick={() => window.print()} disabled={isLoading}>
+        <button className="btn-secondary" onClick={() => window.print()} disabled={isLoading || isSaving}>
           🖨️ Print Form
         </button>
-        <button className="btn-reset" onClick={handleReset} disabled={isLoading}>
+        <button className="btn-reset" onClick={handleReset} disabled={isLoading || isSaving}>
           🔄 Reset Form
         </button>
+        {onBack && (
+          <button className="btn-reset" onClick={onBack} disabled={isLoading || isSaving}>
+            ← Back to Dashboard
+          </button>
+        )}
       </div>
 
       <div id="pdf-content" ref={formRef}>
