@@ -46,10 +46,42 @@ Click **Publish** to save.
 
 ## 5. Get Firebase Config
 
-1. Go to Project Settings (⚙️ icon)
-2. Scroll to "Your apps" section
-3. Click "Web" app or create new one
-4. Copy the config object
+**Method 1 - From Project Overview:**
+
+1. In Firebase Console, go to **Project Overview** (home icon)
+2. Look for the section showing your project details
+3. Click on the **Web** icon (</>) in the "Get started by adding Firebase to your app" section
+4. Click "Web" if prompted
+5. Register your app with name: `wellness-record-app`
+6. Copy the entire config object that looks like:
+
+```javascript
+const firebaseConfig = {
+  apiKey: "AIza...",
+  authDomain: "wellness-record-app.firebaseapp.com",
+  projectId: "wellness-record-app",
+  storageBucket: "wellness-record-app.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abc123def456",
+};
+```
+
+**Method 2 - From Project Settings:**
+
+1. Click the **⚙️ Settings** icon (top right)
+2. Select **Project settings**
+3. Go to the **"Your apps"** tab
+4. Find your **Web** app in the list
+5. Click the copy icon next to the config code
+6. The config will be copied to clipboard
+
+**If you don't see your app:**
+
+1. Click **Add app** button
+2. Select **Web** (</> icon)
+3. Enter app name: `wellness-record-app`
+4. Click **Register app**
+5. Firebase will show you the config - copy it
 
 ## 6. Add Environment Variables
 
@@ -91,6 +123,7 @@ npm start
 ## Backup Your Data
 
 Firebase automatically backs up your data daily. You can also:
+
 1. Go to Firestore Database
 2. Click "..." menu
 3. Export collection (creates backup files)

@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { recordService } from '../services/recordService';
 import '../styles/Dashboard.css';
 
-function Dashboard({ onSelectRecord, onLogout }) {
+function Dashboard({ onSelectRecord, onViewMeasurements, onLogout }) {
   const { user } = useAuth();
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -76,12 +76,20 @@ function Dashboard({ onSelectRecord, onLogout }) {
           />
         </div>
 
-        <button 
-          onClick={() => onSelectRecord(null)} 
-          className="btn-new-record"
-        >
-          + Create New Record
-        </button>
+        <div className="button-group">
+          <button 
+            onClick={() => onSelectRecord(null)} 
+            className="btn-new-record"
+          >
+            + Create New Record
+          </button>
+          <button 
+            onClick={onViewMeasurements} 
+            className="btn-measurements"
+          >
+            📊 Weekly Measurements
+          </button>
+        </div>
 
         {loading ? (
           <div className="loading">Loading records...</div>

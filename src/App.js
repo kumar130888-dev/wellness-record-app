@@ -5,10 +5,11 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import WellnessForm from './components/WellnessForm';
+import MeasurementTracker from './components/MeasurementTracker';
 import { recordService } from './services/recordService';
 
 function AppContent() {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
   const [authMode, setAuthMode] = useState('login');
   const [currentView, setCurrentView] = useState('dashboard');
   const [selectedRecordId, setSelectedRecordId] = useState(null);
@@ -33,7 +34,6 @@ function AppContent() {
   };
 
   const handleLogout = async () => {
-    const { logout } = useAuth();
     await logout();
     setCurrentView('dashboard');
   };
@@ -50,10 +50,26 @@ function AppContent() {
     );
   }
 
+  const handleSelectRecord = (recordId) => {
+    setSelectedRecordId(recordId);
+    setCurrentView('form');
+  };
+
+  const handleViewMeasurements = () => {
+    setCurrentView('measurements');
+  };
+
   return currentView === 'dashboard' ? (
     <Dashboard
-      onSelectRecord={setSelectedRecordId}
+      onSelectRecord={handleSelectRecord}
+      onViewMeasurements={handleViewMeasurements}
       onLogout={handleLogout}
+    />
+  ) : currentView === 'measurements' ? (
+    <MeasurementTracker
+      onBack={() => {
+        setCurrentView('dashboard');
+      }}
     />
   ) : (
     <WellnessForm

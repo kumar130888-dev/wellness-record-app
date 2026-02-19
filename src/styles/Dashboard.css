@@ -71,7 +71,15 @@
   box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
 }
 
-.btn-new-record {
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-new-record,
+.btn-measurements {
   background-color: #28a745;
   color: white;
   padding: 12px 24px;
@@ -81,11 +89,18 @@
   font-weight: bold;
   font-size: 14px;
   transition: background-color 0.3s;
-  margin-bottom: 20px;
 }
 
 .btn-new-record:hover {
   background-color: #218838;
+}
+
+.btn-measurements {
+  background-color: #667eea;
+}
+
+.btn-measurements:hover {
+  background-color: #764ba2;
 }
 
 .loading {
